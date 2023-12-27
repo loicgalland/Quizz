@@ -1,7 +1,7 @@
 export default function quizzMedium(){
     return(
         <div>
-            <h2>Medium</h2>
+            <h2>Medium Quizz</h2>
         </div>
     )
 }

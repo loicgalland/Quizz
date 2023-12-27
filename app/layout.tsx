@@ -17,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="px-5 py-3 text-purple-950">
-          <Navbar />
           {children}
       </body>
     </html>

@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Comment s'appelle les habitants de Paris ?",
+    "answer": "parisiens"
+  },
+  {
+    "question": "Combien font 5x6",
+    "answer": "35"
+  },
+  {
+    "question": "Quelle est la capitale du Royaume Uni ?",
+    "answer": "londres"
+  },
+  {
+    "question": "Dans quel mer se situe la Corse ?",
+    "answer": "méditerranée"
+  },
+  {
+    "question": "Combien de pattes possède une vache ?",
+    "answer": "4"
+  },
+  {
+    "question": "Comment s'appelle le petit de la poule ?",
+    "answer": "poussin"
+  },
+  {
+    "question": "Quelle couleur obtient-on en mélangeant du rouge et du bleu ?",
+    "answer": "violet"
+  },
+  {
+    "question": "Quel était le métier de Johnny Hallyday ?",
+    "answer": "chanteur"
+  },
+  {
+    "question": "Compétez l'expression : \"L'habit ne fait pas le ...\"",
+    "answer": "moine"
+  },
+  {
+    "question": "Comment s'appelle le frère de Mario, le héros de jeux vidéo ?",
+    "answer": "mario"
+  }
+]
