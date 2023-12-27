@@ -1,6 +1,7 @@
 'use client'
 import questionsEasy from '../../assets/easy.json'
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
+import Navbar from "@/app/components/Navbar";
 
 
 interface questionEasy {
@@ -15,9 +16,10 @@ export default function QuizzEasy(){
     const [alreadyAnswered, setAlreadyAnswered] = useState(false);
 
     // Set the answer to the state
-    const handleAnswer = (event) =>{
-        setAnswer(event.target.value)
-    }
+    const handleAnswer = (event: ChangeEvent<HTMLInputElement>) => {
+        setAnswer(event.target.value);
+    };
+
 
     // Submit the answer
     const submitAnswer = () =>{
@@ -43,39 +45,43 @@ export default function QuizzEasy(){
         setIndex(0)
     }
     return(
-        <div className="flex flex-col gap-4 items-center">
-            <h2 className="font-bold text-2xl">Easy Quizz</h2>
-            {index < questionsEasy.length ? (
-                <div className="flex flex-col gap-2 items-center">
-                    <div className="my-5">
-                        <p className="text-center">Question {index +1}/{questionsEasy.length}</p>
-                        <p className="text-center">{ questionsEasy[index].question }</p>
-                    </div>
-                    <form className="flex flex-col gap-2 items-center">
-                        <input type="text" name="answer" value={answer} onChange={handleAnswer} className="border-purple-900 border-2 rounded-full p-2 py-1 w-64"/>
+        <div>
+            <Navbar />
+            <div className="flex flex-col gap-4 items-center">
+                <h2 className="font-bold text-2xl">Easy Quizz</h2>
+                {index < questionsEasy.length ? (
+                    <div className="flex flex-col gap-2 items-center">
+                        <div className="my-5">
+                            <p className="text-center">Question {index +1}/{questionsEasy.length}</p>
+                            <p className="text-center">{ questionsEasy[index].question }</p>
+                        </div>
+                        <form className="flex flex-col gap-2 items-center">
+                            <input type="text" name="answer" value={answer} onChange={handleAnswer} className="border-purple-900 border-2 rounded-full p-2 py-1 w-64"/>
+                            <button
+                                type="submit"
+                                className="bg-purple-950 text-white py-1 px-3 rounded-full w-64 hover:bg-purple-800 hover:cursor-pointer disabled:bg-purple-200 disabled:hover:cursor-default"
+                                disabled={alreadyAnswered || answer.trim() === ""}
+                                onClick={submitAnswer}
+                            >Valider</button>
+                        </form>
                         <button
-                            type="submit"
+                            onClick={goToNextQuestion}
                             className="bg-purple-950 text-white py-1 px-3 rounded-full w-64 hover:bg-purple-800 hover:cursor-pointer disabled:bg-purple-200 disabled:hover:cursor-default"
-                            disabled={alreadyAnswered || answer.trim() === ""}
-                            onClick={submitAnswer}
-                        >Valider</button>
-                    </form>
-                    <button
-                        onClick={goToNextQuestion}
-                        className="bg-purple-950 text-white py-1 px-3 rounded-full w-64 hover:bg-purple-800 hover:cursor-pointer disabled:bg-purple-200 disabled:hover:cursor-default"
-                        disabled={!alreadyAnswered}
-                    >Question Suivante</button>
-                    {success === true ? (<div className="text-green-900">Bonne réponse</div>) : success === false ? (<div className="text-red-900">La bonne réponse était <strong>{questionsEasy[index].answer}</strong></div>) : ""}
-                </div>
-            ) : (
-                <div>
-                    <p>Votre score est de : { score }/{questionsEasy.length}</p>
-                    <button
-                        onClick={resetQuestions}
-                        className="bg-purple-950 text-white py-1 px-3 rounded-full w-64 hover:bg-purple-800 hover:cursor-pointer"
-                    >Recommencer</button>
-                </div>
-            )}
+                            disabled={!alreadyAnswered}
+                        >Question Suivante</button>
+                        {success === true ? (<div className="text-green-900">Bonne réponse</div>) : success === false ? (<div className="text-red-900">La bonne réponse était <strong>{questionsEasy[index].answer}</strong></div>) : ""}
+                    </div>
+                ) : (
+                    <div>
+                        <p>Votre score est de : { score }/{questionsEasy.length}</p>
+                        <button
+                            onClick={resetQuestions}
+                            className="bg-purple-950 text-white py-1 px-3 rounded-full w-64 hover:bg-purple-800 hover:cursor-pointer"
+                        >Recommencer</button>
+                    </div>
+                )}
+
+            </div>
 
         </div>
     )
