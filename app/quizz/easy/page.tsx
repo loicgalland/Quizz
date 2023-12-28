@@ -9,11 +9,11 @@ interface questionEasy {
     answer: string
 }
 export default function QuizzEasy(){
-    const [index, setIndex] = useState(0);
-    const [score, setScore] = useState(0);
-    const [answer, setAnswer] = useState('');
-    const [success, setSuccess] = useState(undefined);
-    const [alreadyAnswered, setAlreadyAnswered] = useState(false);
+    const [index, setIndex] = useState<number>(0);
+    const [score, setScore] = useState<number>(0);
+    const [answer, setAnswer] = useState<string>('');
+    const [success, setSuccess] = useState<any>(undefined);
+    const [alreadyAnswered, setAlreadyAnswered] = useState<boolean>(false);
 
     // Set the answer to the state
     const handleAnswer = (event: ChangeEvent<HTMLInputElement>) => {
@@ -80,7 +80,6 @@ export default function QuizzEasy(){
                         >Recommencer</button>
                     </div>
                 )}
-
             </div>
 
         </div>
